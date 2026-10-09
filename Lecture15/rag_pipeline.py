@@ -172,9 +172,11 @@ def get_llm(
             model=resolved_model,
             google_api_key=resolved_api_key,
             temperature=temperature,
+            max_retries=2,
         )
 
     return _CACHE["llms"][cache_key]
+
 
 
 def load_and_validate_pdf(pdf_path: Union[str, Path]) -> List[Document]:

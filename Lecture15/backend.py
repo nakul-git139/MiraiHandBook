@@ -87,7 +87,17 @@ def root() -> Dict[str, str]:
     }
 
 
+@app.get("/health", tags=["Health"])
+def health() -> Dict[str, str]:
+    """Health check endpoint."""
+    return {
+        "status": "healthy",
+        "service": "MirAI Student Policy Advisor API",
+    }
+
+
 @app.get("/status", response_model=StatusResponse, tags=["Health"])
+
 def get_status() -> StatusResponse:
     """Check whether the policy handbook is currently indexed and ready."""
     try:

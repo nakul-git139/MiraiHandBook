@@ -17,6 +17,14 @@ def test_root_endpoint():
     assert response.json()["status"] == "online"
 
 
+def test_health_endpoint():
+    """Verify GET /health returns healthy status."""
+    response = client.get("/health")
+    assert response.status_code == 200
+    assert response.json()["status"] == "healthy"
+
+
+
 def test_status_endpoint():
     """Verify GET /status checks Chroma collection status."""
     mock_vs = MagicMock()
